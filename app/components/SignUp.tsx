@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import React, { useState } from 'react';
 import { signIn } from "next-auth/react";
-import Link from 'next/link'
+import Link from 'next/link';
 import { GithubIcon } from "lucide-react";
 
 export default function SignupPage() {
@@ -13,7 +13,7 @@ export default function SignupPage() {
     confirmPassword: ''
   });
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -21,7 +21,7 @@ export default function SignupPage() {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
@@ -35,7 +35,7 @@ export default function SignupPage() {
 
     if (result?.error) {
       setError("GitHub login failed. Please try again.");
-    } 
+    }
   };
 
   return (
@@ -126,7 +126,6 @@ export default function SignupPage() {
           </button>
 
           <p className="text-center text-white">Already have an account? <Link className="text-blue-500" href="/user/login">Sign In</Link></p>
-
         </form>
       </div>
     </div>
